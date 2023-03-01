@@ -1,5 +1,33 @@
+DELETE FROM tb_movie;
+DELETE FROM tb_franchise;
+DELETE FROM tb_character;
+
+
 INSERT INTO tb_movie(movie_title, movie_genre, movie_release_date, movie_director, movie_poster_url, movie_trailer)
-VALUES ('Batman v Superman: Dawn of Justice', 'Adventure',
-        2016, 'Zack Snyder',
-        'https://m.media-amazon.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
-        'https://m.media-amazon.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg')
+VALUES ('Captain America: Civil War', 'Action',
+        2016, 'Anthony Russo',
+        'https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg',
+        'https://www.youtube.com/watch?v=dKrVegVI0Us');
+
+INSERT INTO tb_movie(movie_title, movie_genre, movie_release_date, movie_director, movie_poster_url, movie_trailer)
+VALUES ('Doctor Strange', 'Fantasy',
+        2016, 'Scott Derrickson',
+        'https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg',
+        'https://www.youtube.com/watch?v=HSzx-zryEgM');
+
+
+INSERT INTO tb_movie(movie_title, movie_genre, movie_release_date, movie_director, movie_poster_url, movie_trailer)
+VALUES ('Luca', 'Comedy',
+        2021, 'Enrico Casarosa',
+        'https://m.media-amazon.com/images/M/MV5BZTQyNTU0MDktYTFkYi00ZjNhLWE2ODctMzBkM2U1ZTk3YTMzXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg',
+        'https://www.youtube.com/watch?v=0hgHY9k-44U');
+
+
+INSERT INTO tb_franchise(franchise_name, franchise_description)
+VALUES ('Marvel Cinematic Universe', 'The Marvel Cinematic Universe (MCU) films are a series of American superhero' ||
+                                     ' films produced by Marvel Studios based on characters that appear in publications by Marvel Comics');
+
+
+INSERT INTO tb_franchise(franchise_name, franchise_description)
+VALUES ('Walt Disney Pictures', 'Walt Disney Pictures[3] is an American film production company and subsidiary of Walt Disney Studios, ' ||
+                                'a division of Disney Entertainment, which is owned by The Walt Disney Company.');
