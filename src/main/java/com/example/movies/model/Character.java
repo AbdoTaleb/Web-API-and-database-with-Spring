@@ -2,30 +2,32 @@ package com.example.movies.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_character")
 public class Character {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "movie_id")
-//    private int id;
-//    @Column(name = "movie_title", length = 50, nullable = false)
-//    private String title;
-//
-//    @Column(name = "movie_genre", length = 50)
-//    private String genre;
-//
-//    @Column(name = "movie_release_date", length = 50, nullable = false)
-//    private int release_date;
-//
-//    @Column(name = "movie_director", length = 50)
-//    private String director;
-//
-//    @Column(name = "movie_poster", length = 200, nullable = false)
-//    private String poster;
-//
-//    @Column(name = "movie_trailer", length = 200, nullable = false)
-//    private String trailer;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "character_id")
+    private int id;
+    @Column(name = "character_name", length = 50, nullable = false)
+    private String name;
 
-    // Getters and setters
+    @Column(name = "character_alias", length = 50)
+    private String alias;
+
+    @Column(name = "character_gender", length = 50, nullable = false)
+    private int gender;
+
+    @Column(name = "movie_director", length = 50)
+    private String director;
+
+    @Column(name = "character_picture_url", length = 200, nullable = false)
+    private String picture_url;
+
+    @ManyToMany(mappedBy = "characters")
+    private Set<Movie> movies;
+
+     // Getters and setters
 }
