@@ -1,6 +1,6 @@
-DELETE FROM tb_movie;
-DELETE FROM tb_franchise;
-DELETE FROM tb_character;
+-- DELETE FROM tb_movie;
+-- DELETE FROM tb_franchise;
+-- DELETE FROM tb_character;
 
 
 INSERT INTO tb_movie(movie_title, movie_genre, movie_release_date, movie_director, movie_poster_url, movie_trailer)

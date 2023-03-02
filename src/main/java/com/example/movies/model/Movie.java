@@ -49,8 +49,6 @@ public class Movie {
     }
 
 // Getters and setters
-
-
     public int getId() {
         return id;
     }
@@ -105,6 +103,22 @@ public class Movie {
 
     public void setTrailer(String trailer) {
         this.trailer = trailer;
+    }
+
+    public Set<Character> getCharacters() {
+        return characters;
+    }
+
+    public Franchise getFranchise() {
+        return franchise;
+    }
+
+    public void setFranchise(Franchise franchise) {
+        this.franchise = franchise;
+    }
+
+    public void setCharacters(Set<Character> characters) {
+        this.characters = characters;
     }
 
     @Override
