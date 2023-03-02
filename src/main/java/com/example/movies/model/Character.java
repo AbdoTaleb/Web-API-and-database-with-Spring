@@ -18,12 +18,9 @@ public class Character {
     private String alias;
 
     @Column(name = "character_gender", length = 50, nullable = false)
-    private int gender;
+    private String gender;
 
-    @Column(name = "movie_director", length = 50)
-    private String director;
-
-    @Column(name = "character_picture_url", length = 200, nullable = false)
+    @Column(name = "character_picture_url", length = 250, nullable = false)
     private String picture_url;
 
     @ManyToMany(mappedBy = "characters")

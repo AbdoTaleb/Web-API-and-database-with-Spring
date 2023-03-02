@@ -36,5 +36,89 @@ public class Movie {
     @ManyToMany
     private Set<Character> characters;
 
-    // Getters and setters
+    public Movie() {
+    }
+
+    public Movie(String title, String genre, int release_date, String director, String poster_url, String trailer) {
+        this.title = title;
+        this.genre = genre;
+        this.release_date = release_date;
+        this.director = director;
+        this.poster_url = poster_url;
+        this.trailer = trailer;
+    }
+
+// Getters and setters
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(int release_date) {
+        this.release_date = release_date;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getPoster_url() {
+        return poster_url;
+    }
+
+    public void setPoster_url(String poster_url) {
+        this.poster_url = poster_url;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", release_date=" + release_date +
+                ", director='" + director + '\'' +
+                ", poster_url='" + poster_url + '\'' +
+                ", trailer='" + trailer + '\'' +
+                ", franchise=" + franchise +
+                ", characters=" + characters +
+                '}';
+    }
 }
