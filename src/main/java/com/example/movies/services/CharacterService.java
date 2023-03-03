@@ -1,8 +1,7 @@
 package com.example.movies.services;
 
 import com.example.movies.model.Character;
-import com.example.movies.model.Franchise;
-import com.example.movies.model.Movie;
+
 
 import java.util.Collection;
 

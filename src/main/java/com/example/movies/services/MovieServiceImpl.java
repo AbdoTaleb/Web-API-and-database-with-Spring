@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
+
 import org.slf4j.Logger;
 
 
@@ -77,13 +79,5 @@ public class MovieServiceImpl implements MovieService {
     public void setCharacter(int movieId, int characterId) {
     }
 
-    @Override
-    public Collection<Movie> findAllByTitle(String title) {
-        return movieRepository.findAllByTitle(title);
-    }
 
-
-
-
-// omitted
 }

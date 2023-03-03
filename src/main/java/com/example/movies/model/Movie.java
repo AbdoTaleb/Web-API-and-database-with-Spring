@@ -1,5 +1,7 @@
 package com.example.movies.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -43,6 +45,7 @@ public class Movie {
 
     public Movie() {
     }
+
 
     public Movie(String title, String genre, int release_date, String director, String poster_url, String trailer) {
         this.title = title;
@@ -118,6 +121,12 @@ public class Movie {
         return franchise;
     }
 
+    @JsonGetter("franchise")
+    public Integer jsonGetProfessor() {
+        if(franchise != null)
+            return franchise.getId();
+        return null;
+    }
     public void setFranchise(Franchise franchise) {
         this.franchise = franchise;
     }
@@ -126,18 +135,5 @@ public class Movie {
         this.characters = characters;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", release_date=" + release_date +
-                ", director='" + director + '\'' +
-                ", poster_url='" + poster_url + '\'' +
-                ", trailer='" + trailer + '\'' +
-                ", franchise=" + franchise +
-                ", characters=" + characters +
-                '}';
-    }
+
 }

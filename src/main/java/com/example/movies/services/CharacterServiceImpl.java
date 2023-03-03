@@ -7,10 +7,13 @@ import com.example.movies.repositories.MovieRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 
 import java.util.Collection;
+import java.util.Optional;
 
+@Service
 public class CharacterServiceImpl implements CharacterService{
     private final CharacterRepository characterRepository;
     private final Logger logger = LoggerFactory.getLogger(CharacterServiceImpl.class);
@@ -40,16 +43,15 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public Character update(Character entity) {
-        return null;
+        return characterRepository.save(entity);
     }
 
     @Override
     public void deleteById(Integer id) {
-        if(characterRepository.existsById(id)) {
+
             characterRepository.deleteById(id);
-        }
-        else
-            logger.warn("No character exists with ID: " + id);
+
+
     }
 
     @Override
@@ -66,6 +68,7 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public Collection<Character> findAllByName(String name) {
-        return characterRepository.findAllByName(name);
+        return null;
+        //return characterRepository.findAllByName(name);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.movies.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -52,6 +53,7 @@ public class Franchise {
 
 
     @OneToMany(mappedBy = "franchise")
+    @JsonIgnore
     private Set<Movie> movies;
 
 

@@ -7,6 +7,13 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_character")
 public class Character {
+    public Character(String name, String alias, String gender, String picture_url) {
+        this.name = name;
+        this.alias = alias;
+        this.gender = gender;
+        this.picture_url = picture_url;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "character_id")
@@ -22,6 +29,10 @@ public class Character {
 
     @Column(name = "character_picture_url", length = 250, nullable = false)
     private String picture_url;
+
+    public Character() {
+
+    }
 
     public int getId() {
         return id;
