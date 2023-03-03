@@ -16,8 +16,6 @@ import java.util.Set;
 public interface CharacterRepository extends JpaRepository<Character, Integer> {
 
 
-    @Modifying
-    @Query("update Character s set s.id = ?2 where s.id = ?1")
-    int updateStudentsProfessorById(int studentId, int professorId);
+
     Collection<Character> findAllByName(String name);
 }

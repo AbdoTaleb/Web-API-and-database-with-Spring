@@ -48,6 +48,7 @@ public class AppRunner implements ApplicationRunner {
 //        Movie m;
 //        m = movieRepository.findById(69).get();
 //        movieRepository.delete(m);
+//        franchiseRepository.deleteById(1);
 
 
 

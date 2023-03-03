@@ -33,12 +33,12 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie add(Movie entity) {
-        return null;
+        return movieRepository.save(entity);
     }
 
     @Override
     public Movie update(Movie entity) {
-        return null;
+        return movieRepository.save(entity);
     }
 
     @Override
@@ -46,8 +46,6 @@ public class MovieServiceImpl implements MovieService {
     public void deleteById(Integer id) {
         if(movieRepository.existsById(id)) {
             Movie movie = movieRepository.findById(id).get();
-//            movie.getCharacters().forEach(s -> s.setCharacters(null));
-//            movie.getMovies().forEach(s -> s.setFranchise(null));
             movieRepository.delete(movie);
         }
         else
@@ -58,10 +56,7 @@ public class MovieServiceImpl implements MovieService {
     @Transactional
     public void delete(Movie entity) {
         if(movieRepository.equals(entity)) {
-            Movie movie = movieRepository.findById(entity.getId()).get();
-//            movie.getCharacters().forEach(s -> s.setCharacters(null));
-//            movie.getMovies().forEach(s -> s.setFranchise(null));
-            movieRepository.delete(movie);
+            movieRepository.delete(entity);
         }
         else
             logger.warn("No entity exists with entity title: " + entity.getTitle());
@@ -80,18 +75,14 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void setCharacter(int movieId, int characterId) {
-        if(movieRepository.existsById(movieId)) {
-            movieRepository.updateMoviesFranchiseById(movieId, characterId);
-        }
-        else
-            logger.warn("No movie exists with ID: " + movieId);
-
     }
 
     @Override
-    public Collection<Movie> findAllByName(String movieName) {
-        return movieRepository.findAllByName(movieName);
+    public Collection<Movie> findAllByTitle(String title) {
+        return movieRepository.findAllByTitle(title);
     }
+
+
 
 
 // omitted

@@ -19,23 +19,28 @@ public class FranchiseServiceImpl implements FranchiseService{
         this.franchiseRepository = franchiseRepository;
     }
     @Override
-    public Franchise findById(Integer integer) {
+    public Franchise findById(Integer id) {
+        if(franchiseRepository.existsById(id)) {
+            return franchiseRepository.findById(id).get();
+        }
+        else
+            logger.warn("No franchise exists with ID: " + id);
         return null;
     }
 
     @Override
     public Collection<Franchise> findAll() {
-        return null;
+        return franchiseRepository.findAll();
     }
 
     @Override
     public Franchise add(Franchise entity) {
-        return null;
+        return franchiseRepository.save(entity);
     }
 
     @Override
     public Franchise update(Franchise entity) {
-        return null;
+        return franchiseRepository.save(entity);
     }
 
     @Override
@@ -54,6 +59,10 @@ public class FranchiseServiceImpl implements FranchiseService{
 
     @Override
     public void delete(Franchise entity) {
+        if(franchiseRepository.equals(entity)){
+            franchiseRepository.delete(entity);
+        }
+        logger.warn("Franchise doesn't exist");
 
     }
 }
