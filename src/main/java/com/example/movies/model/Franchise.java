@@ -55,7 +55,6 @@ public class Franchise {
 
 
     @OneToMany(mappedBy = "franchise")
-    @JsonIgnore
     private Set<Movie> movies;
 
 
