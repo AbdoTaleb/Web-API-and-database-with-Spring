@@ -16,6 +16,9 @@ public class Franchise {
     @Column(name = "franchise_name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "franchise_description", length = 250, nullable = false)
+    private String description;
+
     public int getId() {
         return id;
     }
@@ -48,8 +51,7 @@ public class Franchise {
         this.movies = movies;
     }
 
-    @Column(name = "franchise_description", length = 250, nullable = false)
-    private String description;
+
 
 
     @OneToMany(mappedBy = "franchise")
