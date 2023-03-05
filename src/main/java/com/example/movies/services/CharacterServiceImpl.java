@@ -24,11 +24,7 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public Character findById(Integer id) {
-        if(characterRepository.existsById(id)){
-            return characterRepository.findById(id).get();
-        }
-        return null;
-
+        return characterRepository.findById(id).get();
     }
 
     @Override
@@ -48,27 +44,14 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public void deleteById(Integer id) {
-
             characterRepository.deleteById(id);
-
-
     }
 
     @Override
     @Transactional
     public void delete(Character entity) {
-        if(characterRepository.equals(entity)){
-            characterRepository.delete(entity);
-        }
-        else{
-            logger.warn("Entity does not exist");
-        }
-
+        characterRepository.delete(entity);
     }
 
-    @Override
-    public Collection<Character> findAllByName(String name) {
-        return null;
-        //return characterRepository.findAllByName(name);
-    }
+
 }

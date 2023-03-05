@@ -14,13 +14,9 @@ import java.util.Set;
 
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Integer> {
-
-
     @Query(value = "SELECT * FROM tb_character where character_name like %?%",
             nativeQuery = true)
     Collection<Character> findAllByName(String name);
-
-
 
 
 }

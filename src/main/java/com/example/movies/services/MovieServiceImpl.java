@@ -72,12 +72,10 @@ public class MovieServiceImpl implements MovieService {
         }
         else
             logger.warn("No movie exists with ID: " + movieId);
-
     }
 
     @Override
     public void setCharacter(int movieId, int characterId) {
     }
-
 
 }
