@@ -1,7 +1,7 @@
 package com.example.movies.controllers;
 
-import com.example.movies.dto.movie.MovieGetDTO;
-import com.example.movies.mappers.MovieMapperImpl;
+import com.example.movies.model.dto.movie.MovieDTO;
+import com.example.movies.mappers.MovieMapper;
 import com.example.movies.model.Movie;
 import com.example.movies.repositories.MovieRepository;
 import com.example.movies.services.MovieService;
@@ -21,18 +21,22 @@ import java.util.Collection;
 @RequestMapping(path = "api/v1/movies") // Base URL
 public class MoviesController {
     private final MovieService movieService;
-    private final MovieMapperImpl movieMapper;
+    private final MovieMapper movieMapper;
     private final MovieRepository movieRepository;
 
-    public MoviesController(MovieService movieService, MovieMapperImpl movieMapper, MovieRepository movieRepository) {
+    public MoviesController(MovieService movieService, MovieMapper movieMapper, MovieRepository movieRepository) {
         this.movieService = movieService;
         this.movieMapper = movieMapper;
         this.movieRepository = movieRepository;
     }
     @Operation(summary = "Get all movies")
     @GetMapping // GET: localhost:8080/api/v1/movies
-    public ResponseEntity<Collection<Movie>> getAll() {
-        return ResponseEntity.ok(movieService.findAll());
+    public ResponseEntity getAll() {
+        // return ResponseEntity.ok(movieService.findAll());
+        Collection<MovieDTO> movie = movieMapper.movieToMovieDtoGetAll(
+                movieService.findAll()
+        );
+        return ResponseEntity.ok(movie);
     }
 
     @Operation(summary = "Get movie by specific ID")
@@ -40,18 +44,19 @@ public class MoviesController {
             @ApiResponse(responseCode = "200",
                     description = "Success",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = MovieGetDTO.class)) }),
+                            schema = @Schema(implementation = MovieDTO.class)) }),
             @ApiResponse(responseCode = "404",
                     description = "Movie does not exist with supplied ID",
                     content = @Content)
 
     })
     @GetMapping("{id}") // GET: localhost:8080/api/v1/movies/1
-    public ResponseEntity<MovieGetDTO> getById(@PathVariable int id) {
-
+    public ResponseEntity<MovieDTO> getById(@PathVariable int id) {
         if(movieRepository.existsById(id)){
-            MovieGetDTO movieGetDTO = movieMapper.toStudentDto(movieService.findById(id));
-            return ResponseEntity.ok(movieGetDTO);
+            MovieDTO movie = movieMapper.movieToMovieDto(
+                    movieService.findById(id)
+            );
+            return ResponseEntity.ok(movie);
         }
         return ResponseEntity.noContent().build();
     }
@@ -78,11 +83,13 @@ public class MoviesController {
                     content = @Content)
     })
     @PutMapping("{id}") // PUT: localhost:8080/api/v1/movies/1
-    public ResponseEntity update(@RequestBody Movie movie, @PathVariable int id) {
-        // Validates if body is correct
+    public ResponseEntity update(@RequestBody MovieDTO movie, @PathVariable int id) {
+
         if(id != movie.getId())
-            return ResponseEntity.badRequest().build();
-        movieService.update(movie);
+            return ResponseEntity.notFound().build();
+        movieService.update(
+                movieMapper.movieDtoToMovie(movie)
+        );
         return ResponseEntity.noContent().build();
     }
 

@@ -1,27 +1,20 @@
-package com.example.movies.model;
+package com.example.movies.model.dto.franchise;
 
-import jakarta.persistence.*;
+import com.example.movies.model.Movie;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Set;
 
-@Entity
+@Data
 @Getter
 @Setter
-public class Franchise {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "franchise_id")
+public class FranchiseDTO {
     private int id;
-
-    @Column(name = "franchise_name", length = 50, nullable = false)
     private String name;
-
-    @Column(name = "franchise_description", length = 250, nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "franchise")
     private Set<Movie> movies;
 
     public int getId() {

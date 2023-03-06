@@ -1,27 +1,45 @@
 package com.example.movies.mappers;
 
-import com.example.movies.dto.movie.MovieGetDTO;
+
+import com.example.movies.model.dto.movie.MovieDTO;
 import com.example.movies.model.Movie;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+import com.example.movies.model.Character;
+import com.example.movies.model.Franchise;
+import org.mapstruct.Qualifier;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
 @Mapper(componentModel = "spring")
-public interface MovieMapper {
+public abstract class MovieMapper {
 
 
-    @Mapping(target = "franchise", source = "franchise.id")
-    @Mapping(target = "characters", source = "characters", qualifiedByName = "charactersToIds")
-    MovieGetDTO toStudentDto(Movie student);
+
+//    @Mapping(target = "characters", source = "characters")
+//    @Mapping(target = "franchise", source = "franchise")
+//    //@Mapping(target = "characters", source = "characters")
+      public abstract MovieDTO movieToMovieDto(Movie movie);
+
+    public abstract Movie movieDtoToMovie(MovieDTO dto);
+//
 //    @Named("charactersToIds")
-//    default Set<Integer> map(Set<Character> source) {
+//    Set<Integer> map(Set<Character> source) {
 //        if(source == null)
 //            return null;
 //        return source.stream()
 //                .map(s -> s.getId()).collect(Collectors.toSet());
 //    }
-    Movie toStudent(MovieGetDTO dto);
+//
+     public abstract Collection<MovieDTO> movieToMovieDtoGetAll(Collection<Movie> students);
+
+
+
+
+
+
 }

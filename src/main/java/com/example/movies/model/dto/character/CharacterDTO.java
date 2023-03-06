@@ -1,45 +1,23 @@
-package com.example.movies.model;
+package com.example.movies.model.dto.character;
 
-import jakarta.persistence.*;
+
+import com.example.movies.model.Movie;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Set;
 
-@Entity
+@Data
 @Getter
 @Setter
-public class Character {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "character_id")
+public class CharacterDTO {
     private int id;
-    @Column(name = "character_name", length = 50, nullable = false)
     private String name;
-
-    @Column(name = "character_alias", length = 50)
     private String alias;
-
-    @Column(name = "character_gender", length = 50, nullable = false)
     private String gender;
-
-    @Column(name = "character_picture_url", length = 250, nullable = false)
     private String picture_url;
-
-    @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies;
-
-    public Character() {
-
-    }
-
-    public Character(String name, String alias, String gender, String picture_url) {
-        this.name = name;
-        this.alias = alias;
-        this.gender = gender;
-        this.picture_url = picture_url;
-    }
-
 
     public int getId() {
         return id;

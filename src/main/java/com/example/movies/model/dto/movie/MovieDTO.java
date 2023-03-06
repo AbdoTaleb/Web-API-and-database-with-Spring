@@ -1,4 +1,4 @@
-package com.example.movies.dto.movie;
+package com.example.movies.model.dto.movie;
 
 import com.example.movies.model.Character;
 import com.example.movies.model.Franchise;
@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Getter
 @Setter
-public class MovieGetDTO {
+public class MovieDTO {
     private int id;
     private String title;
     private String genre;
@@ -19,8 +19,8 @@ public class MovieGetDTO {
     private String director;
     private String poster_url;
     private String trailer;
-    private Franchise franchise;
     private Set<Character> characters;
+    private Franchise franchise;
 
     public int getId() {
         return id;
@@ -78,19 +78,19 @@ public class MovieGetDTO {
         this.trailer = trailer;
     }
 
-    public Franchise getFranchise() {
-        return franchise;
-    }
-
-    public void setFranchise(Franchise franchise) {
-        this.franchise = franchise;
-    }
-
     public Set<Character> getCharacters() {
         return characters;
     }
 
     public void setCharacters(Set<Character> characters) {
         this.characters = characters;
+    }
+
+    public Franchise getFranchise() {
+        return franchise;
+    }
+
+    public void setFranchise(Franchise franchise) {
+        this.franchise = franchise;
     }
 }
